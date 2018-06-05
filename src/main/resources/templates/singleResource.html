@@ -87,9 +87,15 @@ input[type=text]:focus {
 							<td th:text="${res.id}">Resource ID</td>
 							<td th:text="${res.name}">Resource Name</td>
 							<td th:text="${res.url}">Resource Url</td>
-							<td th:text="${res.comments}">Show Resource Comment</td>
-							<td th:text="${res.listOfLabels}">Show Resource Labels</td>
-						</tr>
+								<td><ul th:each=" subRess : ${res.comments}">
+									<li th:text="${subRess.id}"></li>
+									<a th:href="#">Go to resource</a>
+								</ul></td>
+							<td><ul th:each=" subRess : ${res.listOfLabels}">
+									<li th:text="${subRess.labelName}"></li>
+									
+								</ul></td>
+						
 					</tbody>
 
 				</table>

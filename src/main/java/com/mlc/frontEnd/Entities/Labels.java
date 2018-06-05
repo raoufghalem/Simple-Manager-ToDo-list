@@ -1,7 +1,9 @@
 package com.mlc.frontEnd.Entities;
 
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +22,7 @@ public class Labels {
 	private String labelName;
 	private String labelColor;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private SingleResource singleResource;
 	@ManyToOne
 	private ListOfResources listOfResources;
