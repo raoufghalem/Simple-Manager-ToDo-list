@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>My Learning Curve</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" />
+
+<!-- Custom styles for this template -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/simple-sidebar.css}" />
+
+</head>
+
+<body>
+
+
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper" th:fragment="header">
+		<ul class="sidebar-nav">
+			<li class="sidebar-brand"><a href="/"> Start Bootstrap </a></li>
+			
+				
+				<form style="padding-left:16px ;margin-right:10px; padding-bottom:10px" th:action="@{/resource/byName}"  method="get">
+					 <input placeholder="Search.."
+					  type="text" name="search" id="search" th:value="${search}"/>
+					<!--   <button type="submit" value="Search" ><i class="fa fa-search"></i></button>-->
+				</form>			
+			
+			
+			<li><a href="">Dashboard</a></li>
+			<li><a href="/lists/all">My Lists</a></li>
+			<li><a href="/resource/all">My Resources</a></li>
+			<li><a href="/labels/all">Labels</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Services</a></li>
+			<li><a href="#">Contact</a></li>
+		</ul>
+	</div>
+
+</body>
+
+</html>

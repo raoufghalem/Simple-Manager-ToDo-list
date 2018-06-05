@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Simple Sidebar - Start Bootstrap Template</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" />
+
+<!-- Custom styles for this template -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/simple-sidebar.css}" />
+
+</head>
+
+<body>
+
+
+
+	<div id="wrapper">
+		<div th:insert="components/header :: header">&nbsp;</div>
+		<!-- Sidebar -->
+
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle
+				Menu</a>
+			<div class="container-fluid">
+				<h1>Simple Sidebar</h1>
+
+
+				<table class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th>Resource ID</th>
+							<th>Resource Name</th>
+							<th>Resource Url</th>
+							<th>Show Resource Comment</th>
+							<th>Show Resource Labels</th>
+						</tr>
+					</thead>
+					<tbody>
+
+						<tr class="success" th:each=" res :${listOfAllResources}">
+							<td th:text="${res.id}">Resource ID</td>
+							<td th:text="${res.name}">Resource Name</td>
+							<td th:text="${res.url}">Resource Url</td>
+							<td th:text="${res.comments}">Show Resource Comment</td>
+							<td th:text="${res.listOfLabels}">Show Resource Labels</td>
+						</tr>
+
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+		<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+
+
+
+
+
+	<div th:insert="components/footer :: footer">&nbsp;</div>
+
+
+
+
+
+
+
+
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript"
+		th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+	</script>
+
+</body>
+
+</html>

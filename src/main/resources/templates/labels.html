@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Simple Sidebar - Start Bootstrap Template</title>
+
+<!-- Bootstrap core CSS -->
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" />
+
+<!-- Custom styles for this template -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/simple-sidebar.css}" />
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+		<!-- #sidebar-wrapper -->
+		<div th:insert="components/header :: header">&nbsp;</div>
+		<!-- /#sidebar-wrapper -->
+
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Toggle
+				Menu</a>
+			<div class="container-fluid">
+				<br> <br>
+				<!-- Success message upon adding a label -->
+
+				<div class="alert alert-success" th:if="${success != null}">
+					<strong>Well Done!</strong> Successfully <span
+						th:text="${success}"></span> !
+
+				</div>
+
+
+				<h2>My Labels :</h2>
+				<!-- search Top Button -->
+				<form style="padding-bottom: 10px" th:action="@{/labels/byName}"
+					method="get">
+					<input placeholder="Search for labels..." type="text" name="label"
+						id="search" th:value="${label}" />
+				</form>
+
+				<!-- Modal Button -->
+				<button type="button" class="btn btn-info btn-lg"
+					data-toggle="modal" data-target="#myModal">Add Label</button>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+							<div class="modal-body">
+								<form th:action="@{/labels/add}" th:object="${addlabel}"
+									method="post">
+									<p>
+										Label Name: <input type="text" th:field="*{labelName}" />
+									</p>
+									<p>
+										Label color : <input type="text" th:field="*{labelColor}" />
+									</p>
+									<p>
+										<input type="submit" value="Submit" />
+									</p>
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div>
+
+
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Label ID</th>
+						<th>Label Name</th>
+						<th>Label color</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="success" th:each=" res :${labels}">
+
+						<td th:text="${res.id}">List ID</td>
+						<td th:text="${res.labelName}">Name</td>
+						<td th:text="${res.labelColor}">color</td>
+						<th>
+							<!--  DELETE FORM  -->
+							<form action="#" th:action="@{/labels/delete}"
+								th:object="${addlabel}" method="post">
+								<input type="hidden" name="id" th:value="${res.id}" />
+								</p>
+								<input type="hidden" name="labelName"
+									th:value="${res.labelName}" /> <input type="hidden"
+									name="labelColor" th:value="${res.labelColor}" />
+
+								<button class="btn btn-danger" type="submit" value="Submit">DELETE</button>
+							</form>
+							 <!--  UPDATE FORM  -->
+							<button style="display: block;"	class="btn btn-warning collapsible"> UPDATE</button>
+							<form style="display: none" action="#"
+								th:action="@{/labels/update}" th:object="${addlabel}"
+								method="post">
+								<input type="hidden" name="id" th:value="${res.id}" /> 
+								label Name :<br> <input
+									type="text" name="labelName" th:value="${res.labelName}" /> <br>
+								label Color :<br><input
+									type="text" name="labelColor" th:value="${res.labelColor}" />
+								<button class="btn btn-warning" type="submit" value="Submit">UPDATE</button>
+								<br>
+							</form>
+
+
+
+
+
+
+
+
+
+
+						</th>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- /#page-content-wrapper -->
+
+	</div>
+	<!-- /#wrapper -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script type="text/javascript" th:src="@{/vendor/jquery/jquery.min.js}"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript"
+		th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+			coll[i].addEventListener("click", function() {
+
+				var button = this.classList;
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.display === "block") {
+					this.innerText = "UPDATE";
+					button.add("btn-warning");
+					content.style.display = "none";
+				} else {
+					content.style.display = "block";
+					button.remove("btn-warning");		
+					this.innerText = "Hide";
+
+				}
+			});
+		}
+	</script>
+
+</body>
+
+</html>
