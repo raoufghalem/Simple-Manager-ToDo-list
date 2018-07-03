@@ -22,8 +22,7 @@ public class SingleResource {
 	
 	@JsonIgnore
 	@ManyToOne
-	private ListOfResources listOfresource;
-	
+	private ListOfResources listOfresource;	
 	@OneToMany(mappedBy="singleResource")
 	private List<Comment> comments;
 	@OneToMany(mappedBy="")
@@ -85,6 +84,11 @@ public class SingleResource {
 
 	public Long getId() {
 		return id;
+	}
+
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	

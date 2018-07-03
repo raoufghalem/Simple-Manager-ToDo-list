@@ -37,8 +37,6 @@
 			<div class="container-fluid">
 			<br><br>
 				<h2>My lists : </h2>
-
-
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
@@ -50,7 +48,6 @@
 						</tr>
 					</thead>
 					<tbody>
-
 						<tr class="success" th:each=" res :${listOfResources}">
 							<td th:text="${res.id}">List ID</td>
 							<td th:text="${res.listName}">List Name</td>
@@ -61,20 +58,13 @@
 									<li th:text="${subRess.name}"></li>
 									<a th:href="@{'/resource/byId/'+${subRess.id}}">Go to resource</a>
 								</ul></td>
-
 							<td th:text="${res.listOfLabels}">Show Resource Labels</td>
 						</tr>
-
 					</tbody>
 				</table>
-
 			</div>
-
-
-
 		</div>
 		<!-- /#page-content-wrapper -->
-
 	</div>
 	<!-- /#wrapper -->
 

@@ -40,4 +40,16 @@ public class SingleResourceService {
 		return  singleResourceRepository.findAll();
 	}
 
+
+	public void addResource(SingleResource singleresource) {
+		singleResourceRepository.save(singleresource);
+		
+	}
+
+
+	public void removeResource(SingleResource singleresource) {
+		singleResourceRepository.delete(singleresource);
+		
+	}
+
 }

@@ -18,10 +18,6 @@ INSERT INTO labels VALUES (3,'blue','label Three',null,null);
 INSERT INTO labels VALUES (4,'yellow','label Four',null,null);
 
 
-INSERT INTO labels VALUES (1,,,null,null);
-INSERT INTO labels VALUES (2,'label Two',,null,null);
-INSERT INTO labels VALUES (3,,,null,null);
-INSERT INTO labels VALUES (4,,,null,null);
 
 
 
